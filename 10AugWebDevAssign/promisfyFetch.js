@@ -3,6 +3,8 @@
 function enhancedFetch(url, options = {}) {
   return new Promise((resolve, reject) => {
     const timeout = options.timeout || 5000;
+
+    // the request will be aborted if the promise is not resolved within the timeout
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);
 
